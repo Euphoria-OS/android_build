@@ -19,6 +19,7 @@ Invoke ". build/envsetup.sh" from your shell to add the following functions to y
 - sgrep:   Greps on all local source files.
 - godir:   Go to the directory containing a file.
 - pushboot:Push a file from your OUT dir to your phone and reboots it, using absolute path.
+- repolastsync: Prints date and time of last repo sync.
 
 Look at the source to view more functions. The complete list is:
 EOF
@@ -1775,6 +1776,13 @@ function mka() {
             mk_timer schedtool -B -n 1 -e ionice -n 1 make -j$(cat /proc/cpuinfo | grep "^processor" | wc -l) "$@"
             ;;
     esac
+}
+
+function repolastsync() {
+    RLSPATH="$ANDROID_BUILD_TOP/.repo/.repo_fetchtimes.json"
+    RLSLOCAL=$(date -d "$(stat -c %z $RLSPATH)" +"%e %b %Y, %T %Z")
+    RLSUTC=$(date -d "$(stat -c %z $RLSPATH)" -u +"%e %b %Y, %T %Z")
+    echo "Last repo sync: $RLSLOCAL / $RLSUTC"
 }
 
 function fixup_common_out_dir() {
