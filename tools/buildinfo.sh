@@ -55,4 +55,6 @@ if [ -n "$BUILD_THUMBPRINT" ] ; then
 fi
 echo "ro.build.characteristics=$TARGET_AAPT_CHARACTERISTICS"
 
+echo "ro.eos.device=$CUSTOM_DEVICE"
+
 echo "# end build properties"

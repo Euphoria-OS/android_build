@@ -116,6 +116,7 @@ $(full_target): $(sdk_addon_deps) | $(ACP)
 $(full_target_img): PRIVATE_STAGING_DIR := $(call append-path,$(staging),$(addon_dir_img))/images/$(TARGET_CPU_ABI)
 $(full_target_img): $(full_target) $(addon_img_source_prop)
 	@echo Packaging SDK Addon System-Image: $@
+        @echo -e ${PRT_TGT}"Packaging SDK Addon System-Image:"${CL_RST}" $@"
 	$(hide) mkdir -p $(dir $@)
 	$(hide) ( F=$$(pwd)/$@ ; cd $(PRIVATE_STAGING_DIR)/.. && zip -rq $$F $(notdir $(PRIVATE_STAGING_DIR)) )
 

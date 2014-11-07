@@ -71,9 +71,9 @@ $(eval $(call check-api, \
 
 .PHONY: update-api
 update-api: $(INTERNAL_PLATFORM_API_FILE) | $(ACP)
-	@echo Copying current.txt
+	@echo -e ${PRT_TGT}"Copying current.txt"${CL_RST}
 	$(hide) $(ACP) $(INTERNAL_PLATFORM_API_FILE) frameworks/base/api/current.txt
-	@echo Copying removed.txt
+	@echo -e ${PRT_TGT}"Copying removed.txt"${CL_RST}
 	$(hide) $(ACP) $(INTERNAL_PLATFORM_REMOVED_API_FILE) frameworks/base/api/removed.txt
 
 
