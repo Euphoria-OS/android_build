@@ -1913,10 +1913,10 @@ function chromium_prebuilt() {
  		 
     if [ -r $hash ] && [ $(git --git-dir=$T/external/chromium_org/.git --work-tree=$T/external/chromium_org rev-parse --verify HEAD) == $(cat $hash) ]; then
         export PRODUCT_PREBUILT_WEBVIEWCHROMIUM=yes
-        echo "** Prebuilt Chromium is up-to-date; Will be used for build **"
+        echo -e "\e[0;32m** Prebuilt Chromium is up-to-date; Will be used for build **\e[00m"
     else
         export PRODUCT_PREBUILT_WEBVIEWCHROMIUM=no
-        echo "** Prebuilt Chromium out-of-date/not found; Will build from source **"
+        echo -e "\e[0;31m** Prebuilt Chromium out-of-date/not found; Will build from source **\e[00m"
     fi
 }
 
