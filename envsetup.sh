@@ -605,6 +605,8 @@ function lunch()
 
     echo
 
+    set_stuff_for_environment
+
     if [[ $USE_PREBUILT_CHROMIUM -eq 1 ]]; then
         chromium_prebuilt
     else
@@ -614,7 +616,6 @@ function lunch()
 
     fixup_common_out_dir
 
-    set_stuff_for_environment
     printconfig
 }
 
