@@ -1598,6 +1598,9 @@ EOS_TARGET_PACKAGE := $(PRODUCT_OUT)/Euphoria-OS-$(ROM_VERSION).zip
 .PHONY: otapackage bacon
 otapackage: $(INTERNAL_OTA_PACKAGE_TARGET)
 bacon: otapackage
+	ifeq ($(SHARE_BUILD_ANALYTICS),true)
+		$(shell ./build/tools/BuildAnalytics.sh $(STARTTIME))
+	endif
 	$(hide) ln -f $(INTERNAL_OTA_PACKAGE_TARGET) $(EOS_TARGET_PACKAGE)
 	$(hide) $(MD5SUM) $(EOS_TARGET_PACKAGE) > $(EOS_TARGET_PACKAGE).md5sum
 	@echo -e ${CL_GRN}"Package Complete: $(EOS_TARGET_PACKAGE)"${CL_RST}
