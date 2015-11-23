@@ -58,6 +58,14 @@ PWD := $(shell pwd)
 TOP := .
 TOPDIR :=
 
+export STARTTIME := $(shell date +%s)
+
+ifneq ($(wildcard ./out/target/product/.*),)
+	ifeq ($(SHARE_BUILD_ANALYTICS), true)
+		export SHARE_BUILD_ANALYTICS := false
+	endif
+endif
+
 BUILD_SYSTEM := $(TOPDIR)build/core
 
 # This is the default target.  It must be the first declared target.
